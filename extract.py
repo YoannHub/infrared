@@ -7,14 +7,21 @@ import math
 width = 180
 height = 240
 
-diff_start = 0x100 # or 0x80, depending on the file .... I have not yet found a way to detect wich one to use
+
+
+file = open(sys.argv[1], mode='br')
+data = file.read()
+file.close()
+print(data[0x7E])
+print(data[0x7F])
+if data[0x7E] == 0xAC and data[0x7F] == 0xCA:
+   diff_start = 0x80
+else:
+   diff_start = 0x100 
 first_array_start = diff_start
 first_array_end = diff_start + width * height - 1
 second_array_start = first_array_end + 1
 second_array_end = second_array_start + 2 * width * height
-
-file = open(sys.argv[1], mode='br')
-data = file.read()
 
 fir = data[first_array_start:first_array_end]
 sus_temp = data[second_array_start:second_array_end]
