@@ -82,6 +82,26 @@ def drawColor(array, name, palette = "gray"):
             draw.point((x, y), getColorCustomPalette(value, min_grayscale_value, max_grayscale_value, custom_palette_coeff))
     im.save(f"{name}.png")
 
+def extract_jpg_image():
+  jpg_byte_start = b'\xff\xd8'
+  jpg_byte_end = b'\xff\xd9'
+  jpg_image = bytearray()
+
+  with open(sys.argv[1], 'rb') as f:
+    req_data = f.read()
+
+    start = req_data.find(jpg_byte_start)
+
+    if start == -1:
+      print('Could not find JPG start of image marker!')
+      return
+
+    end = req_data.find(jpg_byte_end, start)
+    jpg_image += req_data[start:end+1]
+
+  with open(f'./output/visible.jpg', 'wb') as f:
+    f.write(jpg_image)
+
 drawColor(fir,  "./output/first")
 drawColor(sus,  "./output/second")
 drawColor(diff, "./output/diff")
@@ -89,3 +109,4 @@ drawColor(sumi, "./output/sum")
 drawColor(fir,  "./output/colorIron", "iron")
 drawColor(fir,  "./output/colorCustom", "custompalette")
 drawColor(fir,  "./output/colorGnuPlot", "gnuplot")
+extract_jpg_image()
