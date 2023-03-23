@@ -10,7 +10,7 @@ height = 240
 diff_start = 0x100 # or 0x80, depending on the file .... I have not yet found a way to detect wich one to use
 first_array_start = diff_start
 first_array_end = diff_start + width * height - 1
-second_array_start = diff_start + width * height
+second_array_start = first_array_end + 1
 second_array_end = second_array_start + 2 * width * height
 
 file = open(sys.argv[1], mode='br')
