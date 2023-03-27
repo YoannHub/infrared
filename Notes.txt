@@ -14,7 +14,7 @@ var iron_palette = ["#00000a","#000014","#00001e","#000025","#00002a","#00002e",
 // Gaussian stuff from here https://stackoverflow.com/questions/25668828/how-to-create-colour-gradient-in-python
 
 
-// The gnuplot pm3d palette
+// The gnuplot pm3d palette. Added copyright in the repo : GnuPlotCopyright
 r = Math.round(255*Math.sqrt(x)); 
 g = Math.round(255*Math.pow(x,3)); 
 b = Math.round(255*(Math.sin(2 * Math.PI * x)>=0?
