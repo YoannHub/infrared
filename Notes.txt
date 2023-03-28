@@ -1,6 +1,6 @@
 // Usage
-python.exe pip install --upgrade Pillow
-python.exe pip install --upgrade regex
+python.exe -m pip install --upgrade Pillow
+python.exe -m pip install --upgrade regex
 python.exe .\extract.py .\230314233541.irg
 
 
